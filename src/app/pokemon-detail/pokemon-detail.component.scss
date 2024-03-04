@@ -1,0 +1,12 @@
+$primary-color: #ffffff; 
+$secondary-color: #115891;
+$third-color: #5b86c0;
+$font-family: Arial, sans-serif;
+
+h3 {
+    font-size: 22px;
+    color: $secondary-color;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }

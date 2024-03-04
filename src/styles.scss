@@ -1,4 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-$primary-color: #ffffff; // Green
-$secondary-color: #2196f3; // Blue
-$font-family: Arial, sans-serif;
+@import url("./app/variables.scss");
+
+body{
+    background-color: #e8d4d4;
+    padding: 0;
+    margin: 0;
+}

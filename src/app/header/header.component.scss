@@ -1,0 +1,13 @@
+
+div {
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 50px;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    .header{
+      background-color: var(--red);
+    }
+  }

@@ -11,14 +11,6 @@ h2 {
   justify-content: center;
 }
 
-h3 {
-  font-size: 22px;
-  color: $secondary-color;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-}
-
 ul.pokemons {
   list-style-type: none;
   padding: 0;
@@ -27,19 +19,27 @@ ul.pokemons {
 
 li {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 button {
   background-color: $third-color;
   color: $primary-color;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 100%;
+  width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+
+  &:hover{
+
+  }
 }
 
 button:hover {
@@ -59,8 +59,6 @@ button:hover {
 
 .name {
   display: flex;
-  align-items: center;
-  justify-content: center; 
 }
 
 .selected .name {

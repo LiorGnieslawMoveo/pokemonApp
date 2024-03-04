@@ -1,0 +1,37 @@
+$primary-color: #ffffff; 
+$secondary-color: #115891;
+$third-color: #5b86c0;
+$font-family: Arial, sans-serif;
+
+.center-container{
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+    font-size: 22px;
+    color: $secondary-color;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+.clear {
+    color: #333;
+    background-color: #eee;
+    margin-bottom: 12px;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    &:hover {
+        color: white;
+        background-color: #42545c;
+}
+
+.message{
+}
+}
+  
