@@ -1,0 +1,18 @@
+<div class="bonus">
+  <input class="search-input" type="text" placeholder="Search by name" [(ngModel)]="searchTerm" (input)="searchByName()">
+  <select class="select-dropdown" (change)="filterByType($event.target.value)">
+    <option value="all">All Types</option>
+    <option *ngFor="let type of allTypes" [value]="type">{{ type | uppercase }}</option>
+  </select>
+</div>
+<div class="pokemons-container">
+  <div class="pokemon-card" *ngFor="let pokemon of filteredPokemons">
+      <button [class.selected]="pokemon === selectedPokemon" type="button" (click)="openPopup(pokemon)">
+        <div class="name">{{pokemon.name | uppercase }}</div>
+      <div class="card-body">
+        <img [src]="pokemon.imageUrl" alt="{{ pokemon.name }}" class="pokemon-image">
+      </div>
+    </button>
+    </div>
+  <app-pokemon-detail [pokemon]="selectedPokemon" (close)="closePopup()"></app-pokemon-detail>
+</div>

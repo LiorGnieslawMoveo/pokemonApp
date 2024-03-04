@@ -4,17 +4,15 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { PokemonsComponent } from './pokemons/pokemons.component';
-import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { HeaderComponent } from './header/header.component';
+import { PokemonsComponent } from './components/pokemons/pokemons.component';
+import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonsComponent,
     PokemonDetailComponent,
-    MessagesComponent,
     HeaderComponent
   ],
   imports: [

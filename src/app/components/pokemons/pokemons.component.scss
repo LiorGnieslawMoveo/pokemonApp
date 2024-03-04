@@ -1,0 +1,90 @@
+$primary-color: #ffffff; 
+$secondary-color: #115891;
+$third-color: #5b86c0;
+$font-family: Arial, sans-serif;
+
+
+.pokemons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+}
+
+.pokemon-card {
+  width: calc(33.33% - 20px); 
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden; 
+}
+
+button {
+  background-color: #e4d256;
+  color: #000000;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+
+  &:hover {
+    background-color: darken(#e4d256, 10%);
+  }
+}
+
+.selected {
+  background-color: darken(#e4d256, 20%);
+}
+
+.name {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 5px;
+}
+
+.selected .name {
+  font-weight: bold;
+}
+
+.selected .badge {
+  background-color: lighten( $secondary-color, 20%);
+}
+
+.bonus{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-bottom: 20px;
+}
+
+.search-input{
+  width: 200px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.select-dropdown{
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  .select-dropdown:focus {
+    outline: none;  
+  } 
+}

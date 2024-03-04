@@ -1,8 +1,0 @@
-<ul class="pokemons">
-  <li *ngFor="let pokemon of pokemons">
-    <button [class.selected]="pokemon === selectedPokemon" type="button" (click)="onSelect(pokemon)">
-      <span class="name">{{pokemon.name}}</span>
-    </button>
-  </li>
-</ul>
-<app-pokemon-detail [pokemon]="selectedPokemon"></app-pokemon-detail>
