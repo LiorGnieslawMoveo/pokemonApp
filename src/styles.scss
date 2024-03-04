@@ -1,7 +1,8 @@
-@import url("./app/variables.scss");
+@import "./app/variables.scss";
 
 body{
     background-color: #e8d4d4;
+    font-family: var(--font-family);
     padding: 0;
     margin: 0;
 }

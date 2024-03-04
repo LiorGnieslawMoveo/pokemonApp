@@ -1,8 +1,4 @@
-$primary-color: #ffffff; 
 $secondary-color: #115891;
-$third-color: #5b86c0;
-$font-family: Arial, sans-serif;
-
 
 .pokemons-container {
   display: flex;
@@ -22,7 +18,7 @@ $font-family: Arial, sans-serif;
 }
 
 button {
-  background-color: #e4d256;
+  background-color: var(--pokemon-yellow);
   color: #000000;
   border: none;
   padding: 15px 20px;
@@ -45,7 +41,7 @@ button {
 }
 
 .name {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-family);
   display: flex;
   align-items: center;
   justify-content: center; 
