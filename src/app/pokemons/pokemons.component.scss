@@ -1,0 +1,96 @@
+$primary-color: #ffffff; 
+$secondary-color: #115891;
+$third-color: #5b86c0;
+$font-family: Arial, sans-serif;
+
+h2 {
+  font-size: 28px;
+  color: $secondary-color;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  font-size: 22px;
+  color: $secondary-color;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+ul.pokemons {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: $third-color;
+  color: $primary-color;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button:hover {
+  background-color: darken($secondary-color, 10%);
+}
+
+.selected {
+  background-color: darken($secondary-color, 20%);
+}
+
+.badge {
+  background-color: $secondary-color;
+  color: $primary-color;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.selected .name {
+  font-weight: bold;
+}
+
+.selected .badge {
+  background-color: lighten( $secondary-color, 20%);
+}
+
+.details {
+  margin-top: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+// Angular Material Input Fix
+.mat-input-element {
+  width: 100% !important;
+}

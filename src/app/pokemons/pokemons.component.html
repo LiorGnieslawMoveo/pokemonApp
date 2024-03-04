@@ -1,0 +1,17 @@
+<h2>The 100 Pokemons</h2>
+<ul class="pokemons">
+  <li *ngFor="let pokemon of pokemons">
+    <button [class.selected]="pokemon === selectedPokemon" type="button" (click)="onSelect(pokemon)">
+      <span class="badge">{{pokemon.id}}</span>
+      <span class="name">{{pokemon.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedPokemon">
+  <h3>{{selectedPokemon.name | uppercase}} Details</h3>
+  <div>id: {{selectedPokemon.id}}</div>
+  <div>
+    <label for="pokemon-name">Pokemon name: {{selectedPokemon.name}}</label>
+  </div>
+</div>
