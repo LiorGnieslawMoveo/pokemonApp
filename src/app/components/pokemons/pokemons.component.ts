@@ -58,13 +58,11 @@ export class PokemonsComponent implements OnInit {
 
   filterByType(type: string): void {
     if (type === 'all') {
-      this.filteredPokemons = [...this.pokemons]; // Reset to show all pokemons
+      this.filteredPokemons = [...this.pokemons];
     } else {
       this.filteredPokemons = this.pokemons.filter(pokemon =>
         pokemon.types.includes(type)
       );
     }
   }
-
-
 }
