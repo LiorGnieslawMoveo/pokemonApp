@@ -1,4 +1,9 @@
 @import "./app/style/variables.scss";
+@mixin centered-style {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
 
 body{
     background-color: var(--background-color);
