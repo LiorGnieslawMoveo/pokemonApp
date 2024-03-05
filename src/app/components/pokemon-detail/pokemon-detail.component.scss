@@ -1,3 +1,7 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
 .pokemon-popup-overlay {
   position: fixed;
   top: 0;
@@ -17,14 +21,14 @@
   transition: background-color 0.3s ease;
   width: 50%;
   height: 50%;
-  border-radius: 10px; 
+  @include border-radius(10px);
   box-shadow: var-(-box-shadow);
 }
 
 .pokemon-title {
   font-family: var(--main-font);
   background-color: var(--red-color);
-  border-radius: 10px; 
+  @include border-radius(10px);
   font-weight: bold;
   text-align: center;
   font-size: 22px;
