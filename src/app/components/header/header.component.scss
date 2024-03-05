@@ -1,0 +1,17 @@
+.header {
+  padding: 10px 50px;
+  text-align: center;
+  background-color: var(--red-color);
+  align-items: center;
+  color: var(--primary-color);
+
+  .title{
+    font-family: var(--main-font);
+    font-weight: bold;
+    font-size: 50px;
+    color: var(--white-color);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;  
+  }   
+}
