@@ -14,6 +14,7 @@ export class PokemonsComponent implements OnInit {
   filteredPokemons: Pokemon[] = [];
   searchInput: string = '';
   allTypes: string[] = []; 
+  searchHistory: string[] = [];
 
   selectedPokemon?: Pokemon;
 
@@ -23,6 +24,7 @@ export class PokemonsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPokemons();
+    this.loadSearchHistory();
   }
 
   openPopup(pokemon: Pokemon): void {
@@ -41,10 +43,19 @@ export class PokemonsComponent implements OnInit {
           this.getAllTypes();
         });
   }
+
   searchByName(event: string): void {
     this.filteredPokemons = this.pokemons.filter((pokemon: Pokemon) =>
       pokemon.name.toLowerCase().includes(this.searchInput.toLowerCase())
     );
+    
+    if (this.searchInput.length > 0) {
+      this.searchHistory.push(this.searchInput);
+      if (this.searchHistory.length > 5){
+        this.searchHistory.shift();
+      }
+    localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
+   }
   }
 
   getAllTypes(): void {
@@ -62,6 +73,15 @@ export class PokemonsComponent implements OnInit {
       this.filteredPokemons = this.pokemons.filter((pokemon: Pokemon) =>
         pokemon.types.includes(type)
       );
+    }
+  }
+
+  loadSearchHistory(): void {
+    if (typeof localStorage !== 'undefined') {
+      const savedSearchHistory = localStorage.getItem('searchHistory');
+      if (savedSearchHistory) {
+        this.searchHistory = JSON.parse(savedSearchHistory);
+      }
     }
   }
 }

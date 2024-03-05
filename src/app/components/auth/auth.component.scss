@@ -1,0 +1,28 @@
+@import "../../../styles.scss";
+
+.auth-div{
+    @include centered-style;
+
+    .email-input{
+        width: 200px;
+        padding: 8px;
+        font-size: 16px;
+        border: var(--border-style);
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+
+    .button-login{
+        padding: 8px;
+        font-size: 16px;
+        border: var(--border-style);
+        border-radius: 4px;
+        margin-right: 10px;
+        background-color: var(--red-color);
+        color: var(--pokemon-yellow);
+        cursor: pointer;
+        &:hover {
+            background-color: darken(red, 10%);
+          }
+    }
+}

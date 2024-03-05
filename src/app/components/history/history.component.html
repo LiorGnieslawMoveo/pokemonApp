@@ -1,0 +1,9 @@
+<div class="history" *ngIf="searchHistory.length > 0">
+  <div class="history-list">
+  <div class="title">Search History</div>
+    <ul>
+      <li class="list-item" *ngFor="let item of searchHistory">{{ item }}</li>
+    </ul>
+  </div>
+</div> 
+<div class="no-history" *ngIf="searchHistory.length === 0">No search history available.</div>

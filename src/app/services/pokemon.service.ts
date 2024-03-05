@@ -24,7 +24,7 @@ export class PokemonService {
       mergeMap(pokemons => {
         const requests: Observable<any>[] = pokemons.map(pokemon =>
           this.getPokemonDetails(pokemon.url).pipe(
-            map(detail => ({
+            map((detail: Pokemon) => ({
               types: detail.types.map((type: any) => type.type.name),
               abilities: detail.abilities.map((ability: any) => ability.ability.name),
               height: detail.height,
