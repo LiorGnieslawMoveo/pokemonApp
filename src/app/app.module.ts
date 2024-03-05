@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [
     provideClientHydration()

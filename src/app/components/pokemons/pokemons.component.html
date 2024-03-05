@@ -1,5 +1,5 @@
-<div class="bonus">
-  <input class="search-input" type="text" placeholder="Search by name" [(ngModel)]="searchTerm" (input)="searchByName()">
+<div class="search-select">
+  <input class="search-input" type="text" placeholder="Search by name" [(ngModel)]="searchInput" (input)="searchByName($event)">
   <select class="select-dropdown" (change)="filterByType($event.target.value)">
     <option value="all">All Types</option>
     <option *ngFor="let type of allTypes" [value]="type">{{ type | uppercase }}</option>

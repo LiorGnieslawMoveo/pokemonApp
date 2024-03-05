@@ -1,8 +1,8 @@
-@import "./app/variables.scss";
+@import "./app/style/variables.scss";
 
 body{
-    background-color: #e8d4d4;
-    font-family: var(--font-family);
+    background-color: var(--background-color);
+    font-family: var(--main-font);
     padding: 0;
     margin: 0;
 }

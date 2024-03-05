@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef} from '@angular/core';
 
 import { PokemonService } from '../../services/pokemon.service';
-import { Pokemon } from '../../pokemon';
+import { Pokemon } from '../../type/pokemon';
 
 @Component({
   selector: 'app-pokemons',
@@ -12,12 +12,12 @@ export class PokemonsComponent implements OnInit {
 
   pokemons: Pokemon[] = [];
   filteredPokemons: Pokemon[] = [];
-  searchTerm: string = '';
+  searchInput: string = '';
   allTypes: string[] = []; 
 
   selectedPokemon?: Pokemon;
 
-  @ViewChild('popup') popup: any;
+  @ViewChild('popup') popup: TemplateRef<any>;
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -27,7 +27,6 @@ export class PokemonsComponent implements OnInit {
 
   openPopup(pokemon: Pokemon): void {
     this.selectedPokemon = pokemon;
-    this.popup.openPopup(); 
   }
   
   closePopup(): void {
@@ -36,21 +35,22 @@ export class PokemonsComponent implements OnInit {
 
   getPokemons(): void {
     this.pokemonService.getPokemons()
-        .subscribe(pokemons => {
+        .subscribe((pokemons: Pokemon[]) => {
           this.pokemons = pokemons;
           this.filteredPokemons = [...pokemons];
           this.getAllTypes();
         });
   }
-  searchByName(): void {
-    this.filteredPokemons = this.pokemons.filter(pokemon =>
-      pokemon.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+  searchByName(event: any): void {
+    this.filteredPokemons = this.pokemons.filter((pokemon: Pokemon) =>
+      pokemon.name.toLowerCase().includes(this.searchInput.toLowerCase())
     );
+    console.log(event);
   }
 
   getAllTypes(): void {
     const allTypesSet = new Set<string>();
-    this.pokemons.forEach(pokemon => {
+    this.pokemons.forEach((pokemon: Pokemon) => {
       pokemon.types.forEach(type => allTypesSet.add(type));
     });
     this.allTypes = Array.from(allTypesSet);
@@ -60,7 +60,7 @@ export class PokemonsComponent implements OnInit {
     if (type === 'all') {
       this.filteredPokemons = [...this.pokemons];
     } else {
-      this.filteredPokemons = this.pokemons.filter(pokemon =>
+      this.filteredPokemons = this.pokemons.filter((pokemon: Pokemon) =>
         pokemon.types.includes(type)
       );
     }

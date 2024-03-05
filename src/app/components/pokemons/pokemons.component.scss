@@ -1,5 +1,3 @@
-$secondary-color: #115891;
-
 .pokemons-container {
   display: flex;
   flex-wrap: wrap;
@@ -19,7 +17,7 @@ $secondary-color: #115891;
 
 button {
   background-color: var(--pokemon-yellow);
-  color: #000000;
+  color: var(--black-color);
   border: none;
   padding: 15px 20px;
   cursor: pointer;
@@ -29,7 +27,7 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  box-shadow: var(--box-shadow);
 
   &:hover {
     background-color: darken(#e4d256, 10%);
@@ -38,49 +36,39 @@ button {
 
 .selected {
   background-color: darken(#e4d256, 20%);
+  .name{
+    font-weight: bold;
+    font-family: var(--main-font);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding: 5px;
+  }
 }
 
-.name {
-  font-family: var(--font-family);
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  padding: 5px;
-}
-
-.selected .name {
-  font-weight: bold;
-}
-
-.selected .badge {
-  background-color: lighten( $secondary-color, 20%);
-}
-
-.bonus{
+.search-select{
   display: flex;
   align-items: center;
   justify-content: center; 
   margin-bottom: 20px;
-}
-
-.search-input{
-  width: 200px;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.select-dropdown{
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
-  .select-dropdown:focus {
-    outline: none;  
-  } 
+  .search-input{
+    width: 200px;
+    padding: 8px;
+    font-size: 16px;
+    border: var(--border-style);
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  .select-dropdown{
+    padding: 8px;
+    font-size: 16px;
+    border: var(--border-style);
+    border-radius: 4px;
+    background-color: var(--white-color);
+    color: var(--greyblack-color);
+    cursor: pointer;
+    .select-dropdown:focus {
+      outline: none;
+    } 
+  }
 }

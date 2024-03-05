@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Pokemon } from '../../pokemon';
+import { Pokemon } from '../../type/pokemon';
 
 @Component({
   selector: 'app-pokemon-detail',
