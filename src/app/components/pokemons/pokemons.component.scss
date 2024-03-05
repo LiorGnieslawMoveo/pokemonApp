@@ -1,3 +1,9 @@
+@mixin centered-style {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
 .pokemons-container {
   display: flex;
   flex-wrap: wrap;
@@ -40,16 +46,12 @@ button {
   .name{
     font-weight: bold;
     font-family: var(--main-font);
-    display: flex;
-    align-items: center;
-    justify-content: center; 
+    @include centered-style;
   }
 }
 
 .search-select{
-  display: flex;
-  align-items: center;
-  justify-content: center; 
+  @include centered-style; 
   margin-bottom: 20px;
   .search-input{
     width: 200px;
