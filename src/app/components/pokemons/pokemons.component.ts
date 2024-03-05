@@ -41,11 +41,10 @@ export class PokemonsComponent implements OnInit {
           this.getAllTypes();
         });
   }
-  searchByName(event: any): void {
+  searchByName(event: string): void {
     this.filteredPokemons = this.pokemons.filter((pokemon: Pokemon) =>
       pokemon.name.toLowerCase().includes(this.searchInput.toLowerCase())
     );
-    console.log(event);
   }
 
   getAllTypes(): void {
