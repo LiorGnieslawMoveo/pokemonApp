@@ -5,11 +5,11 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
-export class AuthComponent implements OnInit {
+export class LoginComponent implements OnInit {
   email: string = '';
   isLoggedIn: boolean = false;
   errorMessage: string = '';

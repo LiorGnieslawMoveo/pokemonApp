@@ -9,7 +9,7 @@ import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-deta
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HistoryComponent } from './components/history/history.component';
-import { AuthComponent } from './components/auth/auth.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { AuthComponent } from './components/auth/auth.component';
     PokemonDetailComponent,
     HeaderComponent,
     HistoryComponent,
-    AuthComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

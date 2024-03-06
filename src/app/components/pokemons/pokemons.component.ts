@@ -35,7 +35,7 @@ export class PokemonsComponent implements OnInit {
       this.isLoggedIn = isLoggedIn;
     });
     if (!this.isLoggedIn){
-      this.router.navigate(['/auth']);
+      this.router.navigate(['/login']);
     }
     this.getPokemons();
     this.loadSearchHistory();

@@ -33,6 +33,6 @@ export class HeaderComponent implements OnInit {
     this.cookieService.delete('isLoggedIn');
     this.isLoggedIn = false;
     this.pokemonService.setLoggedInStatus(false);
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/login']);
   }
 }
