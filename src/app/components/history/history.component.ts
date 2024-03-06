@@ -22,7 +22,7 @@ export class HistoryComponent implements OnInit{
 
   ngOnInit(): void {
     this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
-    this.pokemonService.getIsLoggedInSubject().subscribe(isLoggedIn => {
+    this.pokemonService.getIsLoggedInSubjectStatus().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
     if (!this.isLoggedIn){

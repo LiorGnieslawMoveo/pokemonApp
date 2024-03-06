@@ -3,8 +3,8 @@
     border: var(--border-style);
     border-radius: 8px;
     padding: 16px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
     .title {
         font-weight: bold;
         font-size: 18px;
@@ -24,6 +24,6 @@
     border-radius: 8px;
     padding: 16px;
     font-style: italic;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
 }

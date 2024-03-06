@@ -32,7 +32,7 @@ export class PokemonsComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
     console.log("getting the val from the cookie " + this.isLoggedIn)
-    this.pokemonService.getIsLoggedInSubject().subscribe(isUserLoggedIn => {
+    this.pokemonService.getIsLoggedInSubjectStatus().subscribe(isUserLoggedIn => {
       console.log("subscribing " + isUserLoggedIn)
       this.isLoggedIn = isUserLoggedIn;
       if (this.isLoggedIn === false){
