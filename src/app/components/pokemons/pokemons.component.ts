@@ -31,19 +31,21 @@ export class PokemonsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
-    this.pokemonService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
+    console.log("getting the val from the cookie " + this.isLoggedIn)
+    this.pokemonService.getIsLoggedInSubject().subscribe(isUserLoggedIn => {
+      console.log("subscribing " + isUserLoggedIn)
+      this.isLoggedIn = isUserLoggedIn;
+      if (this.isLoggedIn === false){
+        console.log("navigated")
+        this.router.navigate(['/login']);
+      }
     });
-    if (!this.isLoggedIn){
-      this.router.navigate(['/login']);
-    }
     this.getPokemons();
     this.loadSearchHistory();
   }
 
   openPopup(pokemon: Pokemon): void {
     this.selectedPokemon = pokemon;
-    console.log('clicked');
     this.searchHistory.push(this.selectedPokemon.name);
       if (this.searchHistory.length > 5){
         this.searchHistory.shift();

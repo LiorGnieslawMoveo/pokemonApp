@@ -1,11 +1,11 @@
-<div *ngIf=(isLoggedIn) class="search-select">
+<div class="search-select">
   <input class="search-input" type="text" placeholder="Search by name" [(ngModel)]="searchInput" (input)="searchByName($event)">
   <select class="select-dropdown" (change)="filterByType($event.target.value)">
     <option value="all">All Types</option>
     <option *ngFor="let type of allTypes" [value]="type">{{ type | uppercase }}</option>
   </select>
 </div>
-<div *ngIf=(isLoggedIn) class="pokemons-container">
+<div class="pokemons-container">
   <div class="pokemon-card" *ngFor="let pokemon of filteredPokemons">
       <button [class.selected]="pokemon === selectedPokemon" type="button" (click)="openPopup(pokemon)">
         <div class="name">{{pokemon.name | uppercase }}</div>

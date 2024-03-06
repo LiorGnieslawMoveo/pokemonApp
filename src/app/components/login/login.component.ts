@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
-    this.pokemonService.isLoggedIn$.subscribe(isLoggedIn => {
+    this.pokemonService.getIsLoggedInSubject().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
 
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       // this.isLoggedIn = true;
       this.pokemonService.setLoggedInStatus(true);
       this.router.navigate(['/pokemons']);
+      console.log('logged in to pokemons')
     } else {
       this.errorMessage = 'Unauthorized email address';
     }

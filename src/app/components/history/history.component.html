@@ -1,4 +1,4 @@
-<div class="history" *ngIf="searchHistory.length > 0 && isLoggedIn">
+<div class="history" *ngIf="searchHistory.length > 0">
   <div class="history-list">
   <div class="title">Search History</div>
     <ul>
@@ -6,4 +6,4 @@
     </ul>
   </div>
 </div> 
-<div class="no-history" *ngIf="searchHistory.length === 0  && isLoggedIn">No search history available.</div>
+<div class="no-history" *ngIf="searchHistory.length === 0">No search history available.</div>

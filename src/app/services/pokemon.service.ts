@@ -11,14 +11,16 @@ import { Pokemon } from '../interfaces/pokemon.interface';
 export class PokemonService {
   private apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  // isLoggedInObservable: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
   setLoggedInStatus(status: boolean): void {
     this.isLoggedInSubject.next(status);
   }
-  
+  getIsLoggedInSubject(){
+    return this.isLoggedInSubject;
+  }
   getPokemons(): Observable<Pokemon[]> {
     return this.http.get<any>(this.apiUrl + '?offset=0&limit=100').pipe(
       map(response => response.results.map((pokemon: Pokemon) => ({
