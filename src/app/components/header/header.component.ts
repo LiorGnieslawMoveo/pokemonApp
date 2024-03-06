@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
@@ -10,19 +11,22 @@ import { PokemonService } from '../../services/pokemon.service';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
-  constructor(private pokemonService: PokemonService, private router: Router) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router,
+    private cookieService: CookieService
+    ) {}
 
   ngOnInit(): void {
-    // if (typeof sessionStorage !== 'undefined') {
-    //   this.isLoggedIn = sessionStorage.getItem('loggedInEmail') ? true : false ;
-    // }
+    this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
     this.pokemonService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
   }
 
   logout(): void {
-    sessionStorage.removeItem('isLoggedIn');
+    this.cookieService.delete('isLoggedIn');
+    this.isLoggedIn = false;
     this.pokemonService.setLoggedInStatus(false);
     this.router.navigate(['/auth']);
   }

@@ -10,7 +10,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HistoryComponent } from './components/history/history.component';
 import { AuthComponent } from './components/auth/auth.component';
-// import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { AuthComponent } from './components/auth/auth.component';
     HeaderComponent,
     HistoryComponent,
     AuthComponent,
-    // NavigationComponent
   ],
   imports: [
     BrowserModule,

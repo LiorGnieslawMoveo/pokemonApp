@@ -29,6 +29,12 @@ export class PokemonsComponent implements OnInit {
 
   openPopup(pokemon: Pokemon): void {
     this.selectedPokemon = pokemon;
+    console.log('clicked');
+    this.searchHistory.push(this.selectedPokemon.name);
+      if (this.searchHistory.length > 5){
+        this.searchHistory.shift();
+      }
+    localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
   }
   
   closePopup(): void {
@@ -48,14 +54,6 @@ export class PokemonsComponent implements OnInit {
     this.filteredPokemons = this.pokemons.filter((pokemon: Pokemon) =>
       pokemon.name.toLowerCase().includes(this.searchInput.toLowerCase())
     );
-    
-    if (this.searchInput.length > 0) {
-      this.searchHistory.push(this.searchInput);
-      if (this.searchHistory.length > 5){
-        this.searchHistory.shift();
-      }
-    localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
-   }
   }
 
   getAllTypes(): void {
