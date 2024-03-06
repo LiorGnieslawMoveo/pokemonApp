@@ -5,10 +5,11 @@ import { HistoryComponent } from './components/history/history.component';
 import { AuthComponent } from './components/auth/auth.component';
 
 const routes: Routes = [
+  { path: '', redirectTo:'auth', pathMatch:'full'},
   { path: 'pokemons', component: PokemonsComponent},
   { path: 'history', component: HistoryComponent},
   { path: 'auth', component: AuthComponent},
-  { path: '', redirectTo:'auth', pathMatch:'full'}
+  { path: '**', redirectTo:'auth', pathMatch:'full' }
 ];
 
 @NgModule({

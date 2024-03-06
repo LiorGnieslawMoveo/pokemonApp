@@ -6,10 +6,9 @@
   />
   <div class="left-section">
     <div class="title">Pokemon App</div>
-    <nav>
+    <nav *ngIf="isLoggedIn">
       <a routerLink="/pokemons">Pokemons</a>
       <a routerLink="/history">Search History</a>
-      <!-- <a routerLink="/auth">Log-In</a> -->
     </nav>
   <button *ngIf="isLoggedIn" class="logout-button" (click)="logout()">Logout</button>
   </div> 
