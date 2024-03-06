@@ -21,6 +21,7 @@
         margin-right: 10px;
         background-color: var(--red-color);
         color: var(--yellow-color);
+        font-weight: bold;
         cursor: pointer;
         &:hover {
             background-color: darken(red, 10%);

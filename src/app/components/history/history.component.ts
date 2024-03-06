@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { PokemonService } from '../../services/pokemon.service';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-history',
@@ -9,8 +12,22 @@ import { Component, OnInit } from '@angular/core';
 
 export class HistoryComponent implements OnInit{
   searchHistory: string[] = [];
+  isLoggedIn: boolean = false;
+
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router,
+    private cookieService: CookieService
+    ) {}
 
   ngOnInit(): void {
+    this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
+    this.pokemonService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
+    if (!this.isLoggedIn){
+      this.router.navigate(['/auth']);
+    }
     this.loadSearchHistory();
   }
 

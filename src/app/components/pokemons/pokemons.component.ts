@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, TemplateRef} from '@angular/core';
 
 import { PokemonService } from '../../services/pokemon.service';
 import { Pokemon } from '../../interfaces/pokemon.interface';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemons',
@@ -9,6 +11,7 @@ import { Pokemon } from '../../interfaces/pokemon.interface';
   styleUrl: './pokemons.component.scss'
 })
 export class PokemonsComponent implements OnInit {
+  isLoggedIn: boolean = false;
 
   pokemons: Pokemon[] = [];
   filteredPokemons: Pokemon[] = [];
@@ -20,9 +23,20 @@ export class PokemonsComponent implements OnInit {
 
   @ViewChild('popup') popup: TemplateRef<any>;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router,
+    private cookieService: CookieService
+    ) {}
 
   ngOnInit(): void {
+    this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
+    this.pokemonService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
+    if (!this.isLoggedIn){
+      this.router.navigate(['/auth']);
+    }
     this.getPokemons();
     this.loadSearchHistory();
   }

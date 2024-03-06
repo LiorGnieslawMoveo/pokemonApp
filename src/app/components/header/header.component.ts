@@ -11,6 +11,11 @@ import { PokemonService } from '../../services/pokemon.service';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
+  navLinks: any[] = [
+    { label: 'Pokemons', routerLink: '/pokemons' },
+    { label: 'Search History', routerLink: '/history' }
+  ];
+
   constructor(
     private pokemonService: PokemonService,
     private router: Router,
