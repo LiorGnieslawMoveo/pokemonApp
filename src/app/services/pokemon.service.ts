@@ -4,15 +4,16 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
 import { map, mergeMap} from 'rxjs/operators';
 import { Pokemon } from '../interfaces/pokemon.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
   private apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.cookieService.get('isLoggedIn')==='true');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   setLoggedInStatus(status: boolean): void {
     this.isLoggedInSubject.next(status);
