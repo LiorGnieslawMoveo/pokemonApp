@@ -10,7 +10,7 @@
   @include centered-style;
   z-index: 999;
   .pokemon-popup {
-    background-color: var(--pokemon-yellow);
+    background-color: var(--yellow-color);
     border: none;
     transition: background-color 0.3s ease;
     width: 50%;

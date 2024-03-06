@@ -1,8 +1,16 @@
 <div class="header">
-    <img
-      src="https://sg.portal-pokemon.com/img/common/logo.png"
-      alt="pokemon-img"
-    />
+  <img
+    class="image"
+    src="https://sg.portal-pokemon.com/img/common/logo.png"
+    alt="pokemon-img"
+  />
+  <div class="left-section">
     <div class="title">Pokemon App</div>
-    <button *ngIf="!isLoggedIn" class="logout-button" (click)="logout()">Logout</button>
+    <nav>
+      <a routerLink="/pokemons">Pokemons</a>
+      <a routerLink="/history">Search History</a>
+      <!-- <a routerLink="/auth">Log-In</a> -->
+    </nav>
+  <button *ngIf="isLoggedIn" class="logout-button" (click)="logout()">Logout</button>
+  </div> 
 </div>

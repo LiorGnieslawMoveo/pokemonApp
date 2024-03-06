@@ -2,6 +2,7 @@
 
 .auth-div{
     @include centered-style;
+    margin-top: 20px;
 
     .email-input{
         width: 200px;
@@ -19,7 +20,7 @@
         border-radius: 4px;
         margin-right: 10px;
         background-color: var(--red-color);
-        color: var(--pokemon-yellow);
+        color: var(--yellow-color);
         cursor: pointer;
         &:hover {
             background-color: darken(red, 10%);

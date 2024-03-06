@@ -6,7 +6,7 @@ import { AuthComponent } from './components/auth/auth.component';
 
 const routes: Routes = [
   { path: 'pokemons', component: PokemonsComponent},
-  { path: 'search-history', component: HistoryComponent},
+  { path: 'history', component: HistoryComponent},
   { path: 'auth', component: AuthComponent},
   { path: '', redirectTo:'auth', pathMatch:'full'}
 ];

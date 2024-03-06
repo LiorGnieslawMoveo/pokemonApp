@@ -10,8 +10,6 @@ import { Component, OnInit } from '@angular/core';
 export class HistoryComponent implements OnInit{
   searchHistory: string[] = [];
 
-  constructor() {}
-
   ngOnInit(): void {
     this.loadSearchHistory();
   }

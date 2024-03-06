@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, forkJoin } from 'rxjs';
+import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
 import { map, mergeMap} from 'rxjs/operators';
 import { Pokemon } from '../type/pokemon';
 
@@ -10,9 +10,15 @@ import { Pokemon } from '../type/pokemon';
 })
 export class PokemonService {
   private apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
+  setLoggedInStatus(status: boolean): void {
+    this.isLoggedInSubject.next(status);
+  }
+  
   getPokemons(): Observable<Pokemon[]> {
     return this.http.get<any>(this.apiUrl + '?offset=0&limit=100').pipe(
       map(response => response.results.map((pokemon: Pokemon) => ({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-header',
@@ -9,19 +10,21 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private pokemonService: PokemonService, private router: Router) {}
 
   ngOnInit(): void {
-    if (typeof sessionStorage !== 'undefined') {
-      this.isLoggedIn = sessionStorage.getItem('loggedInEmail') === 'true';
-    }
+    // if (typeof sessionStorage !== 'undefined') {
+    //   this.isLoggedIn = sessionStorage.getItem('loggedInEmail') ? true : false ;
+    // }
+    this.pokemonService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 
   logout(): void {
-    sessionStorage.clear();
-    this.isLoggedIn = false;
-    this.router.navigate(['/auth']).then(() => {
-      window.location.reload();
-    })
+    sessionStorage.removeItem('loggedInEmail');
+    // this.isLoggedIn = false;
+    this.pokemonService.setLoggedInStatus(false);
+    this.router.navigate(['/auth']);
   }
 }
