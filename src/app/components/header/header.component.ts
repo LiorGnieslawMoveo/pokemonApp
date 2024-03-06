@@ -22,8 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    sessionStorage.removeItem('loggedInEmail');
-    // this.isLoggedIn = false;
+    sessionStorage.removeItem('isLoggedIn');
     this.pokemonService.setLoggedInStatus(false);
     this.router.navigate(['/auth']);
   }

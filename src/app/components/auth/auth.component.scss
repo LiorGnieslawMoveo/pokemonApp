@@ -27,3 +27,10 @@
           }
     }
 }
+
+.error-message{
+    @include centered-style;
+    margin-top: 10px;
+    color: var(--red-color);
+    font-weight: bold;
+}

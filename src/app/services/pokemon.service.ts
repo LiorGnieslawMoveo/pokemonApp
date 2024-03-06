@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
 import { map, mergeMap} from 'rxjs/operators';
-import { Pokemon } from '../type/pokemon';
+import { Pokemon } from '../interfaces/pokemon.interface';
 
 @Injectable({
   providedIn: 'root'

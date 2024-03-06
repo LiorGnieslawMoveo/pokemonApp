@@ -10,13 +10,13 @@ import { PokemonService } from '../../services/pokemon.service';
 export class AuthComponent implements OnInit {
   email: string = '';
   isLoggedIn: boolean = false;
+  errorMessage: string = '';
 
   constructor(private pokemonService: PokemonService, private router: Router){}
 
   ngOnInit(): void {
-    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('loggedInEmail')) {
-      const storedEmail = sessionStorage.getItem('loggedInEmail');
-        // this.isLoggedIn = true;
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('isLoggedIn')) {
+      const storedEmail = sessionStorage.getItem('isLoggedIn');
     }
     this.pokemonService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
@@ -26,12 +26,11 @@ export class AuthComponent implements OnInit {
 
   login(): void {
     if (this.email === 'demo@skills.co.il') {
-      sessionStorage.setItem('loggedInEmail', this.email);
-      // this.isLoggedIn = true;
+      sessionStorage.setItem('isLoggedIn', 'true');
       this.pokemonService.setLoggedInStatus(true);
       this.router.navigate(['/pokemons']);
     } else {
-      alert('Unauthorized email address');
+      this.errorMessage = 'Unauthorized email address';
     }
   }
 }
