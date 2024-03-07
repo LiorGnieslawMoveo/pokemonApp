@@ -47,16 +47,15 @@ export class MapComponent implements AfterViewInit {
     autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace();
       if (!place.geometry || !place.geometry.location) {
-        console.log('No location found for this place');
         return;
       }
 
       const location = place.geometry.location;
-      const latLng = new google.maps.LatLng(location.lat(), location.lng());
+      this.coordinates = new google.maps.LatLng(location.lat(), location.lng());
 
-      this.marker.setPosition(latLng);
-      this.map.setCenter(latLng);
-      this.map.setZoom(17);
+      this.marker.setPosition(this.coordinates);
+      this.map.setCenter(this.coordinates);
+      this.map.setZoom(this.mapOptions.zoom);
     });
    }
 }

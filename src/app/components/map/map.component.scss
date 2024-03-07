@@ -1,4 +1,24 @@
-#map {
-    height: 500px;
-    width: 100%;
+@import "../../../styles.scss";
+
+div {
+    @include centered-style;
+    #map{
+        height: 400px; 
+        width: 95%; 
+        border-radius: 15px;
+        box-shadow: var(--box-shadow)
+    }
+  }
+
+.map-search{
+    @include centered-style;
+    margin: 20px;
+    input{
+        width: 200px;
+        padding: 8px;
+        font-size: 16px;
+        border: var(--border-style);
+        border-radius: 4px;
+        margin-right: 10px;
+    }
 }
