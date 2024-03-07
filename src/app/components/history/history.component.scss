@@ -1,0 +1,29 @@
+.history {
+    margin-top: 20px;
+    border: var(--border-style);
+    border-radius: 8px;
+    padding: 16px;
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    .title {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .history-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .list-item {
+        margin-bottom: 5px;
+    }
+}
+.no-history {
+    margin-top: 20px;
+    border: var(--border-style);
+    border-radius: 8px;
+    padding: 16px;
+    font-style: italic;
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+}

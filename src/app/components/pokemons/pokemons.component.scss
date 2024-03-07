@@ -19,7 +19,7 @@
 }
 
 button {
-  background-color: var(--pokemon-yellow);
+  background-color: var(--yellow-color);
   color: var(--black-color);
   border: none;
   padding: 15px 20px;
@@ -48,6 +48,8 @@ button {
 
 .search-select{
   @include centered-style;
+  background-color: var(--red-color);
+  padding: 20px;
   margin-bottom: 20px;
   .search-input{
     width: 200px;

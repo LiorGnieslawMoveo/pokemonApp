@@ -1,0 +1,37 @@
+@import "../../../styles.scss";
+
+.login-div{
+    @include centered-style;
+    margin-top: 20px;
+
+    .email-input{
+        width: 200px;
+        padding: 8px;
+        font-size: 16px;
+        border: var(--border-style);
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+
+    .button-login{
+        padding: 8px;
+        font-size: 16px;
+        border: var(--border-style);
+        border-radius: 4px;
+        margin-right: 10px;
+        background-color: var(--red-color);
+        color: var(--yellow-color);
+        font-weight: bold;
+        cursor: pointer;
+        &:hover {
+            background-color: darken(red, 10%);
+          }
+    }
+}
+
+.error-message{
+    @include centered-style;
+    margin-top: 10px;
+    color: var(--red-color);
+    font-weight: bold;
+}

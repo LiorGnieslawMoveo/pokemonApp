@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, forkJoin } from 'rxjs';
+import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
 import { map, mergeMap} from 'rxjs/operators';
-import { Pokemon } from '../type/pokemon';
+import { Pokemon } from '../interfaces/pokemon.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
   private apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.cookieService.get('isLoggedIn')==='true');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
+  setLoggedInStatus(status: boolean): void {
+    this.isLoggedInSubject.next(status);
+  }
+  getIsLoggedInSubjectStatus(): Observable<boolean> {
+    return this.isLoggedInSubject.asObservable();
+  }
   getPokemons(): Observable<Pokemon[]> {
     return this.http.get<any>(this.apiUrl + '?offset=0&limit=100').pipe(
       map(response => response.results.map((pokemon: Pokemon) => ({
@@ -24,7 +32,7 @@ export class PokemonService {
       mergeMap(pokemons => {
         const requests: Observable<any>[] = pokemons.map(pokemon =>
           this.getPokemonDetails(pokemon.url).pipe(
-            map(detail => ({
+            map((detail: Pokemon) => ({
               types: detail.types.map((type: any) => type.type.name),
               abilities: detail.abilities.map((ability: any) => ability.ability.name),
               height: detail.height,
