@@ -17,6 +17,8 @@ export class MapComponent implements AfterViewInit {
   lng = 34.7707653;
 
   coordinates = new google.maps.LatLng(this.lat, this.lng);
+  directionsService = new google.maps.DirectionsService();
+  directionsRenderer = new google.maps.DirectionsRenderer();
 
   mapOptions: google.maps.MapOptions = {
     center: this.coordinates,
@@ -33,6 +35,8 @@ export class MapComponent implements AfterViewInit {
   }
 
   mapInitializer() {
+
+
     const loader = new Loader({
             apiKey: 'AIzaSyAprBGltoQnlqmfETgqf-QxvazlxQRn2oA',
             version: "weekly",
@@ -43,6 +47,7 @@ export class MapComponent implements AfterViewInit {
       this.marker.setMap(this.map);
     });
 
+    this.directionsRenderer.setMap(this.map);
     const autocomplete = new google.maps.places.Autocomplete(this.searchInput.nativeElement);
     autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace();
@@ -58,4 +63,22 @@ export class MapComponent implements AfterViewInit {
       this.map.setZoom(this.mapOptions.zoom);
     });
    }
+
+   calcRoute() {
+    var home = new google.maps.LatLng(37.7699298, -122.4469157);
+    var office = new google.maps.LatLng(37.7683909618184, -122.51089453697205);
+    this.directionsRenderer.setMap(this.map)
+
+    var request = {
+      origin: home,
+      destination: office,
+      travelMode:google.maps.TravelMode['DRIVING']
+    };
+
+    this.directionsService.route(request, function(result, status) {
+      if (status == 'OK') {
+        this.directionsRenderer.setDirections(result);
+      }
+    });
+  }
 }

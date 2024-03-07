@@ -14,11 +14,27 @@ div {
     @include centered-style;
     margin: 20px;
     input{
-        width: 200px;
+        width: 400px;
         padding: 8px;
         font-size: 16px;
         border: var(--border-style);
         border-radius: 4px;
         margin-right: 10px;
+    }
+}
+
+div button {
+    left: 25%;
+    top: 265px;
+    position: absolute;
+    z-index: 5;
+    width: 150px;
+    padding: 8px;
+    font-size: 10px;
+    border: var(--border-style);
+    border-radius: 4px;
+    margin-right: 10px;
+    &:hover{
+        background-color: green;
     }
 }
