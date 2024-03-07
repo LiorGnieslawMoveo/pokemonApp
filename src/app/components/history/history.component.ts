@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { HistoryService } from '../../services/history.service';
 
 @Component({
   selector: 'app-history',
@@ -17,7 +18,8 @@ export class HistoryComponent implements OnInit{
   constructor(
     private pokemonService: PokemonService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private historyService: HistoryService
     ) {}
 
   ngOnInit(): void {
@@ -28,15 +30,6 @@ export class HistoryComponent implements OnInit{
     if (!this.isLoggedIn){
       this.router.navigate(['/login']);
     }
-    this.loadSearchHistory();
-  }
-
-  loadSearchHistory(): void {
-    if (typeof localStorage !== 'undefined') {
-      const savedSearchHistory = localStorage.getItem('searchHistory');
-      if (savedSearchHistory) {
-        this.searchHistory = JSON.parse(savedSearchHistory);
-      }
-    }
+    this.searchHistory = this.historyService.loadSearchHistory();
   }
 }

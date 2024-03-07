@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   isLoggedIn: boolean = false;
   errorMessage: string = '';
+  validEmail: string = 'demo@skills.co.il';
 
   constructor(
     private pokemonService: PokemonService,
@@ -25,16 +26,17 @@ export class LoginComponent implements OnInit {
     this.pokemonService.getIsLoggedInSubjectStatus().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
-
+    if (this.isLoggedIn){
+      this.router.navigate(['/pokemons']);
+    }
   }
 
   login(): void {
-    if (this.email === 'demo@skills.co.il') {
+    if (this.email === this.validEmail) {
       this.cookieService.set('isLoggedIn', 'true');
       this.isLoggedIn = true;
       this.pokemonService.setLoggedInStatus(true);
       this.router.navigate(['/pokemons']);
-      console.log('logged in to pokemons')
     } else {
       this.errorMessage = 'Unauthorized email address';
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { PokemonService } from '../../services/pokemon.service';
+import { navLinks } from '../../constants/navLinks';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,7 @@ import { PokemonService } from '../../services/pokemon.service';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
-
-  navLinks: any[] = [
-    { label: 'Pokemons', routerLink: '/pokemons' },
-    { label: 'Search History', routerLink: '/history' }
-  ];
+  navLinks = navLinks;
 
   constructor(
     private pokemonService: PokemonService,
@@ -24,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
-    this.pokemonService.getIsLoggedInSubject().subscribe(isLoggedIn => {
+    this.pokemonService.getIsLoggedInSubjectStatus().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
   }

@@ -4,6 +4,7 @@ import { PokemonService } from '../../services/pokemon.service';
 import { Pokemon } from '../../interfaces/pokemon.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { HistoryService } from '../../services/history.service';
 
 @Component({
   selector: 'app-pokemons',
@@ -26,22 +27,20 @@ export class PokemonsComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private historyService: HistoryService
     ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.cookieService.get('isLoggedIn') === 'true';
-    console.log("getting the val from the cookie " + this.isLoggedIn)
     this.pokemonService.getIsLoggedInSubjectStatus().subscribe(isUserLoggedIn => {
-      console.log("subscribing " + isUserLoggedIn)
       this.isLoggedIn = isUserLoggedIn;
       if (this.isLoggedIn === false){
-        console.log("navigated")
         this.router.navigate(['/login']);
       }
     });
     this.getPokemons();
-    this.loadSearchHistory();
+    this.searchHistory = this.historyService.loadSearchHistory();
   }
 
   openPopup(pokemon: Pokemon): void {
@@ -87,15 +86,6 @@ export class PokemonsComponent implements OnInit {
       this.filteredPokemons = this.pokemons.filter((pokemon: Pokemon) =>
         pokemon.types.includes(type)
       );
-    }
-  }
-
-  loadSearchHistory(): void {
-    if (typeof localStorage !== 'undefined') {
-      const savedSearchHistory = localStorage.getItem('searchHistory');
-      if (savedSearchHistory) {
-        this.searchHistory = JSON.parse(savedSearchHistory);
-      }
     }
   }
 }
