@@ -1,26 +1,62 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Loader } from "@googlemaps/js-api-loader";
-import { env } from '../../constants/env';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
-export class MapComponent implements OnInit {
-  
-  ngOnInit(): void {  
+
+
+export class MapComponent implements AfterViewInit {
+  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
+  @ViewChild('searchInput', { static: false }) searchInput: ElementRef<HTMLInputElement>;
+
+  map: google.maps.Map = undefined;
+  lat = 32.0624076;
+  lng = 34.7707653;
+
+  coordinates = new google.maps.LatLng(this.lat, this.lng);
+
+  mapOptions: google.maps.MapOptions = {
+    center: this.coordinates,
+    zoom: 15,
+  };
+
+  marker = new google.maps.Marker({
+    position: this.coordinates,
+    map: this.map,
+  });
+
+    ngAfterViewInit() {  
+    this.mapInitializer();
+  }
+
+  mapInitializer() {
     const loader = new Loader({
-      // apiKey: process.env.GOOGLE_MAPS_API_KEY,
-      apiKey: 'AIzaSyD-0OWZHN3odTcFaBU4CNVpRDh9Wd_Ro20',
-      version: "weekly",
+            apiKey: 'AIzaSyAprBGltoQnlqmfETgqf-QxvazlxQRn2oA',
+            version: "weekly",
+          });
+
+    loader.load().then(() => {  
+      this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
+      this.marker.setMap(this.map);
     });
 
-    loader.load().then(() => {
-      const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
+    const autocomplete = new google.maps.places.Autocomplete(this.searchInput.nativeElement);
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (!place.geometry || !place.geometry.location) {
+        console.log('No location found for this place');
+        return;
+      }
+
+      const location = place.geometry.location;
+      const latLng = new google.maps.LatLng(location.lat(), location.lng());
+
+      this.marker.setPosition(latLng);
+      this.map.setCenter(latLng);
+      this.map.setZoom(17);
     });
-  }
+   }
 }

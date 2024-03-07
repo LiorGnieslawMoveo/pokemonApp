@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'pokemons', component: PokemonsComponent},
   { path: 'history', component: HistoryComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'map', component: MapComponent},
+  { path: 'mymap', component: MapComponent},
   { path: '**', redirectTo:'login', pathMatch:'full' }
 ];
 
