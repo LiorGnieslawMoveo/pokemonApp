@@ -24,17 +24,20 @@ div {
 }
 
 div button {
-    left: 25%;
-    top: 265px;
+    left: 22%;
+    background-color: var(--white-color);
+    font-family: var(--main-font);
+    top: 262px;
     position: absolute;
     z-index: 5;
-    width: 150px;
-    padding: 8px;
-    font-size: 10px;
+    width: 180px;
+    padding: 10px;
+    font-size: 15px;
     border: var(--border-style);
     border-radius: 4px;
     margin-right: 10px;
     &:hover{
-        background-color: green;
+        background-color: rgb(216, 228, 216);
     }
+
 }
