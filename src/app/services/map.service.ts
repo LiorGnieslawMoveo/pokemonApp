@@ -1,12 +1,14 @@
 import { Injectable, ElementRef } from '@angular/core';
 import { Loader } from "@googlemaps/js-api-loader";
 import { Coordinates } from '../interfaces/coordinates.interface';
+import { environment } from '../../../enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class MapService {
+  private API_KEY = environment.API_KEY;
   private map: google.maps.Map = undefined;
   private directionsService = new google.maps.DirectionsService();
   private directionsRenderer = new google.maps.DirectionsRenderer();
@@ -15,16 +17,16 @@ export class MapService {
     lat: 32.0932539,
     lng: 34.7759649
   };
-  home = new google.maps.LatLng(this.homeCoordinates.lat, this.homeCoordinates.lng);
+  home = new google.maps.LatLng(this.homeCoordinates);
 
   officeCoordinates: Coordinates = {
     lat: 32.0624076,
     lng: 34.7707653
   };
-  office = new google.maps.LatLng(this.officeCoordinates.lat, this.officeCoordinates.lng);
+  office = new google.maps.LatLng(this.officeCoordinates);
 
 
-  coordinates = new google.maps.LatLng(this.officeCoordinates.lat, this.officeCoordinates.lng);
+  coordinates = new google.maps.LatLng(this.officeCoordinates);
   mapOptions: google.maps.MapOptions = {
       center: this.coordinates,
       zoom: 15,
@@ -37,8 +39,7 @@ export class MapService {
 
   initMap(mapContainer: ElementRef, searchInput: ElementRef<HTMLInputElement>): void {
     const loader = new Loader({
-      apiKey: 'AIzaSyAprBGltoQnlqmfETgqf-QxvazlxQRn2oA',
-      // apiKey: process.env.API_KEY,
+      apiKey: this.API_KEY,
       version: "weekly",
     });
 
