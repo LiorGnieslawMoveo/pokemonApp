@@ -7,7 +7,6 @@ import { MapService } from '../../services/map.service';
   styleUrl: './map.component.scss'
 })
 
-
 export class MapComponent implements AfterViewInit {
   @ViewChild('mapContainer', {static: false}) mapContainer: ElementRef;
   @ViewChild('searchInput', { static: false }) searchInput: ElementRef<HTMLInputElement>;

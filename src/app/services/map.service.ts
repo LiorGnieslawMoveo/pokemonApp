@@ -1,14 +1,11 @@
 import { Injectable, ElementRef } from '@angular/core';
-import { Loader } from "@googlemaps/js-api-loader";
 import { Coordinates } from '../interfaces/coordinates.interface';
-import { environment } from '../../../enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class MapService {
-  private API_KEY = environment.API_KEY;
   private map: google.maps.Map = undefined;
   private directionsService = new google.maps.DirectionsService();
   private directionsRenderer = new google.maps.DirectionsRenderer();
@@ -38,27 +35,21 @@ export class MapService {
   });
 
   initMap(mapContainer: ElementRef, searchInput: ElementRef<HTMLInputElement>): void {
-    const loader = new Loader({
-      apiKey: this.API_KEY,
-      version: "weekly",
-    });
-
-    loader.load().then(() => {
-      this.createMap(mapContainer);
-      this.setupAutocomplete(searchInput);
-    });
+    console.log("init map")
+    this.createMap(mapContainer);
+    this.setupAutocomplete(searchInput);
   }
 
   private createMap(mapContainer: ElementRef): void {
-      this.map = new google.maps.Map(mapContainer.nativeElement, this.mapOptions);
-      this.marker.setMap(this.map);
-      this.directionsRenderer.setMap(this.map);
+    this.map = new google.maps.Map(mapContainer.nativeElement, this.mapOptions);
+    this.marker.setMap(this.map);
+    this.directionsRenderer.setMap(this.map);
   }
 
   private setupAutocomplete(searchInput: ElementRef<HTMLInputElement>): void {
     const autocomplete = new google.maps.places.Autocomplete(searchInput.nativeElement);
     autocomplete.addListener('place_changed', () => {
-      const place = autocomplete.getPlace();
+    const place = autocomplete.getPlace();
       if (!place.geometry || !place.geometry.location) {
         return;
       }
