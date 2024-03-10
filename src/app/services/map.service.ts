@@ -35,7 +35,6 @@ export class MapService {
   });
 
   initMap(mapContainer: ElementRef, searchInput: ElementRef<HTMLInputElement>): void {
-    console.log("init map")
     this.createMap(mapContainer);
     this.setupAutocomplete(searchInput);
   }
