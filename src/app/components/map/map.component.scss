@@ -27,12 +27,14 @@ button {
     background-color: var(--white-color);
     font-family: var(--main-font);
     width: 180px;
+    height: 40px;
     padding: 10px;
     font-size: 15px;
     box-shadow: var(--box-shadow);
     border: var(--border-style);
     border-radius: 4px;
     margin-right: 10px;
+    line-height: 20px; 
     cursor: pointer;
     &:hover{
         background-color: rgb(216, 228, 216);
@@ -45,7 +47,7 @@ div {
     flex-direction:column;
     #map{
         margin: 10px;
-        height: 400px; 
+        height: 600px; 
         width: 95%; 
         border-radius: 15px;
         box-shadow: var(--box-shadow)
