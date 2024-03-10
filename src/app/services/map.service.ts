@@ -6,7 +6,7 @@ import { Coordinates } from '../interfaces/coordinates.interface';
 })
 
 export class MapService {
-  private map: google.maps.Map = undefined;
+  private map!: google.maps.Map;
   private directionsService = new google.maps.DirectionsService();
   private directionsRenderer = new google.maps.DirectionsRenderer();
 
