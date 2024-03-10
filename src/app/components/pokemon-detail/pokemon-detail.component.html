@@ -3,22 +3,16 @@
     <div class="pokemon-title"> {{pokemon.name  | uppercase }}</div>
       <div class="card-body">
         <img [src]="pokemon.imageUrl" alt="{{ pokemon.name }}" class="pokemon-image">
-        <div class="pokemon-info">
-          <div class="info-label">Types: </div>
-          <div class="info-value">{{pokemon.types.join(', ')}}</div>
-        </div>
-        <div class="pokemon-info">
-          <div class="info-label">Abilities: </div>
-          <div class="info-value">{{pokemon.abilities.join(', ')}}</div>
-        </div>
-        <div class="pokemon-info">
-          <div class="info-label">Height: </div>
-          <div class="info-value">{{pokemon.height}} cm</div>
-        </div>
-        <div class="pokemon-info">
-          <div class="info-label">Weight: </div>
-          <div class="info-value">{{pokemon.weight}} kg</div>
-        </div>
+        <ng-container *ngFor="let property of ['Types', 'Abilities', 'Height', 'Weight']">
+          <div class="pokemon-info">
+            <div class="info-label">{{property}}:</div>
+            <div class="info-value" *ngIf="property === 'Types' || property === 'Abilities'">
+              {{pokemon[property.toLowerCase()].join(', ')}}
+            </div>
+            <div class="info-value" *ngIf="property === 'Height'">{{pokemon.height}} cm</div>
+            <div class="info-value" *ngIf="property === 'Weight'">{{pokemon.weight}} kg</div>
+          </div>
+        </ng-container>
       </div>
     </div>
 </div>
