@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Loader } from "@googlemaps/js-api-loader";
 import { MapService } from '../../services/map.service';
 
 @Component({
@@ -13,13 +12,17 @@ export class MapComponent implements AfterViewInit {
   @ViewChild('mapContainer', {static: false}) mapContainer: ElementRef;
   @ViewChild('searchInput', { static: false }) searchInput: ElementRef<HTMLInputElement>;
 
-  constructor(private mapService: MapService) { }
+  constructor(private mapService: MapService) {}
 
-  ngAfterViewInit() {  
+  ngAfterViewInit(): void {  
     this.mapService.initMap(this.mapContainer, this.searchInput);
   }
 
-   calcRoute() {
+   calcRoute(): void {
     this.mapService.calcRoute();
+  }
+
+  resetMap(searchInput: HTMLInputElement): void {
+    this.mapService.resetMap(searchInput);
   }
 }

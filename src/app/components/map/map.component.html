@@ -1,7 +1,10 @@
 <span class="map-search">
     <input placeholder="Search for location" #searchInput>
+    <div class="buttons-div">
+        <button (click)="calcRoute()">Office Directions 🚗</button>
+        <button (click)="resetMap(searchInput)">Back</button>
+    </div>
 </span>
 <div>
-    <button (click)="calcRoute()">Navigate to the office</button>
     <div #mapContainer id="map"></div>
 </div>

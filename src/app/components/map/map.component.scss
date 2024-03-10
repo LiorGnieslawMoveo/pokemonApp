@@ -1,17 +1,17 @@
 @import "../../../styles.scss";
 
-div {
-    @include centered-style;
-    #map{
-        height: 400px; 
-        width: 95%; 
-        border-radius: 15px;
-        box-shadow: var(--box-shadow)
-    }
-  }
+span{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.buttons-div{
+    display: flex;
+    flex-direction: row;
+}
 
 .map-search{
-    @include centered-style;
     margin: 20px;
     input{
         width: 400px;
@@ -23,21 +23,31 @@ div {
     }
 }
 
-div button {
-    left: 22%;
+button {
     background-color: var(--white-color);
     font-family: var(--main-font);
-    top: 262px;
-    position: absolute;
-    z-index: 5;
     width: 180px;
     padding: 10px;
     font-size: 15px;
+    box-shadow: var(--box-shadow);
     border: var(--border-style);
     border-radius: 4px;
     margin-right: 10px;
+    cursor: pointer;
     &:hover{
         background-color: rgb(216, 228, 216);
     }
-
+    
 }
+
+div {
+    @include centered-style;
+    flex-direction:column;
+    #map{
+        margin: 10px;
+        height: 400px; 
+        width: 95%; 
+        border-radius: 15px;
+        box-shadow: var(--box-shadow)
+    }
+  }
