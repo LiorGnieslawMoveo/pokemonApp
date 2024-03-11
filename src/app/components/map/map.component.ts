@@ -13,8 +13,12 @@ export class MapComponent implements AfterViewInit {
 
   constructor(private mapService: MapService) {}
 
-  ngAfterViewInit(): void {  
-    this.mapService.initMap(this.mapContainer, this.searchInput);
+  async ngAfterViewInit() {  
+    try {
+      this.mapService.initMap(this.mapContainer, this.searchInput);
+    } catch (error) {
+      console.error('Error loading Google Maps', error);
+    }
   }
 
    calcRoute(): void {
@@ -24,4 +28,10 @@ export class MapComponent implements AfterViewInit {
   resetMap(searchInput: HTMLInputElement): void {
     this.mapService.resetMap(searchInput);
   }
+
+  changeMapStyle(): void {
+    this.mapService.changeMapStyle();
+  }
+
+  
 }

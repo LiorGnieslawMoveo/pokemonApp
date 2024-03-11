@@ -1,11 +1,26 @@
 import { Injectable, ElementRef } from '@angular/core';
 import { officeCoordinates, homeCoordinates, defaultZoomLevel } from '../constants/mapInfo';
+import { Loader } from '@googlemaps/js-api-loader';
+import { environment } from '../../../enviroment';
+import { mapStyle } from '../constants/map-style';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class MapService {
+  private loader: Loader;
+  private isStyleChanged: boolean;
+
+
+  constructor(){
+    this.loader = new Loader({
+      apiKey: environment.API_KEY,
+      version: 'weekly',
+      libraries: ['places'],
+    });
+    this.isStyleChanged = false;
+  }
   private map!: google.maps.Map;
   private directionsService = new google.maps.DirectionsService();
   private directionsRenderer = new google.maps.DirectionsRenderer();
@@ -67,5 +82,10 @@ export class MapService {
     this.marker.setPosition(officeCoordinates);
     this.map.setZoom(defaultZoomLevel);
     this.directionsRenderer.setMap(null);
+  }
+
+  changeMapStyle(): void {
+    this.isStyleChanged =  !this.isStyleChanged;
+    this.map.setOptions({ styles: this.isStyleChanged ? mapStyle : [] });
   }
 }
