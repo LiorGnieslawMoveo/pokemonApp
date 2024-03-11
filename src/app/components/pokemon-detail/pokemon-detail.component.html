@@ -9,8 +9,7 @@
             <div class="info-value" *ngIf="property === 'Types' || property === 'Abilities'">
               {{pokemon[property.toLowerCase()].join(', ')}}
             </div>
-            <div class="info-value" *ngIf="property === 'Height'">{{pokemon.height}} cm</div>
-            <div class="info-value" *ngIf="property === 'Weight'">{{pokemon.weight}} kg</div>
+            <div class="info-value">{{ getProperty(pokemon, property) }}</div>
           </div>
         </ng-container>
       </div>
