@@ -13,8 +13,8 @@
     background-color: var(--yellow-color);
     border: none;
     transition: background-color 0.3s ease;
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 40%;
     border-radius: 10px;
     box-shadow: var-(-box-shadow);
   }
@@ -34,12 +34,12 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 20px;
 }
 
   .pokemon-image {
     width: 150px;
     height: 150px;
-    margin-right: 20px;
   }
 
   .pokemon-details {

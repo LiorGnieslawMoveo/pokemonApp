@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HistoryComponent } from './components/history/history.component';
 import { LoginComponent } from './components/login/login.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     HistoryComponent,
     LoginComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,55 @@
+@import "../../../styles.scss";
+
+span{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.buttons-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.map-search{
+    margin: 20px;
+    input{
+        width: 400px;
+        padding: 8px;
+        font-size: 16px;
+        border: var(--border-style);
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+}
+
+button {
+    background-color: var(--white-color);
+    font-family: var(--main-font);
+    width: 180px;
+    height: 40px;
+    padding: 10px;
+    font-size: 15px;
+    box-shadow: var(--box-shadow);
+    border: var(--border-style);
+    border-radius: 4px;
+    margin-right: 10px;
+    line-height: 20px; 
+    cursor: pointer;
+    &:hover{
+        background-color: rgb(216, 228, 216);
+    }
+    
+}
+
+div {
+    @include centered-style;
+    flex-direction:column;
+    #map{
+        margin: 10px;
+        height: 600px; 
+        width: 95%; 
+        border-radius: 15px;
+        box-shadow: var(--box-shadow)
+    }
+  }

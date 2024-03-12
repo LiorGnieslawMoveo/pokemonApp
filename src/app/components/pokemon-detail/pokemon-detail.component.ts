@@ -17,4 +17,15 @@ export class PokemonDetailComponent {
   preventClose(event: MouseEvent): void {
     event.stopPropagation();
   }
+
+  getProperty(pokemon: Pokemon, property: string): string {
+    switch (property) {
+      case 'Height':
+        return pokemon.height + ' cm';
+      case 'Weight':
+        return pokemon.weight + ' kg';
+      default:
+        return '';
+    }
+  }
 }
