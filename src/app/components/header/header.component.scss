@@ -1,11 +1,11 @@
 .header {
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   background-color: var(--red-color);
   align-items: center;
   color: var(--primary-color);
 
-  .image{
+  .image {
     display: flex;
     margin-bottom: 10px;
     margin-right: 20px;
@@ -16,17 +16,17 @@
     align-items: center;
   }
 
-  .title{
+  .title {
     font-family: var(--main-font);
     font-weight: bold;
     font-size: 50px;
     color: var(--white-color);
     margin-bottom: 10px;
     display: flex;
-    justify-content: center;  
-  } 
+    justify-content: center;
+  }
 
-  .logout-button{
+  .logout-button {
     padding: 8px;
     display: flex;
     align-items: center;
@@ -37,26 +37,29 @@
     background-color: var(--red-color);
     color: var(--yellow-color);
     cursor: pointer;
+
     &:hover {
-        background-color: darken(red, 10%);
-      }
+      background-color: darken(red, 10%);
+    }
   }
+
   nav {
     background-color: var(--red-color);
     padding: 10px 20px;
     display: flex;
     justify-content: center;
+
     a {
-      color: var(--white-color); 
+      color: var(--white-color);
       text-decoration: none;
       margin: 0 10px;
       font-size: 18px;
       transition: color 0.3s ease;
-    
-    &:hover {
-      color: var(--white-color); 
-      text-decoration: underline;
+
+      &:hover {
+        color: var(--white-color);
+        text-decoration: underline;
+      }
     }
-   }
-  }  
+  }
 }

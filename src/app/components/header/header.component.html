@@ -1,14 +1,9 @@
 <div class="header">
   <div class="left-section">
-    <img
-      class="image"
-      src="https://sg.portal-pokemon.com/img/common/logo.png"
-      alt="pokemon-img"
-    />
-    <div class="title">Pokemon App</div>
+    <img class="image" src="https://sg.portal-pokemon.com/img/common/logo.png" alt="pokemon-img" />
     <nav *ngIf="isLoggedIn">
       <a *ngFor="let link of navLinks" [routerLink]="link.routerLink">{{ link.label }}</a>
     </nav>
-  <button *ngIf="isLoggedIn" class="logout-button" (click)="logout()">Logout 🔓</button>
-  </div> 
+    <button *ngIf="isLoggedIn" class="logout-button" (click)="logout()">Logout 🔓</button>
+  </div>
 </div>

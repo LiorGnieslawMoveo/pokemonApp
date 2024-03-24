@@ -3,21 +3,28 @@
     border: var(--border-style);
     border-radius: 8px;
     padding: 16px;
-    background-color: var(--white-color);
+    background-color: var(--yellow-color);
     box-shadow: var(--box-shadow);
+
     .title {
         font-weight: bold;
         font-size: 18px;
         margin-bottom: 10px;
     }
+
     .history-list {
         list-style-type: none;
-        padding: 0;
     }
+
+    .roman-list {
+        list-style-type: upper-roman;
+    }
+
     .list-item {
-        margin-bottom: 5px;
+        padding: 5px;
     }
 }
+
 .no-history {
     margin-top: 20px;
     border: var(--border-style);
