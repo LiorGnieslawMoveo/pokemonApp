@@ -1,10 +1,13 @@
 <ng-container *ngIf="searchHistory && searchHistory.length > 0; else noHistory">
   <div class="history-container">
-    <div class="history-list">
-      <div class="title">Search History</div>
-      <ul class="roman-list">
-        <li class="list-item" *ngFor="let item of searchHistory">{{ item }}</li>
-      </ul>
+    <h1 class="title">Search History</h1>
+    <div class="pokemon-list">
+      <div class="pokemon-card" *ngFor="let pokemon of pokemons">
+        <div class="name">{{ pokemon.name }}</div>
+        <div class="card-body">
+          <img [src]="pokemon.imageUrl" alt="{{ pokemon.name }}" class="pokemon-image">
+        </div>
+      </div>
     </div>
   </div>
 </ng-container>

@@ -34,17 +34,27 @@ export class PokemonService {
 
   getPokemonDetails(url: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(url).pipe(
-      map(detail => ({
-        name: detail.name,
-        types: detail.types.map((type: any) => type.type.name),
-        abilities: detail.abilities.map((ability: any) => ability.ability.name),
-        height: detail.height,
-        weight: detail.weight,
-        imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.extractPokemonIdFromUrl(url)}.png`,
-        url: url,
-        id: this.extractPokemonIdFromUrl(url)
-      }))
+      map(detail => this.mapPokemon(detail, url))
     );
+  }
+
+  getPokemonDetailsByName(name: string): Observable<Pokemon> {
+    return this.http.get<any>(`${this.apiUrl}${name}`).pipe(
+      map(response => this.mapPokemon(response, response.species.url))
+    );
+  }
+
+  private mapPokemon(detail: any, url: string): Pokemon {
+    return {
+      name: detail.name,
+      types: detail.types.map((type: any) => type.type.name),
+      abilities: detail.abilities.map((ability: any) => ability.ability.name),
+      height: detail.height,
+      weight: detail.weight,
+      imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.extractPokemonIdFromUrl(url)}.png`,
+      url: url,
+      id: this.extractPokemonIdFromUrl(url)
+    };
   }
 
   private extractPokemonIdFromUrl(url: string): number {

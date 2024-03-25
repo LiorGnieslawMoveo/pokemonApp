@@ -1,33 +1,67 @@
 .history-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
     margin: 20px;
-    border: var(--border-style);
     border-radius: 8px;
     padding: 16px;
-    background-color: var(--yellow-color);
-    box-shadow: var(--box-shadow);
 
     .title {
         font-weight: bold;
-        font-size: 18px;
-        margin-bottom: 10px;
+        font-size: 30px;
+        padding-bottom: 15px;
+        justify-content: center;
     }
 
-    .history-list {
-        list-style-type: none;
+    .pokemon-list {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        .pokemon-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: space-around;
+            min-width: 100px;
+            min-height: 100px;
+            flex: 0 0 calc(33.333% - 20px);
+            border: var(--border-style);
+            border-radius: 10px;
+            padding: 16px;
+            background-color: var(--yellow-color);
+            box-shadow: var(--box-shadow);
+            border-radius: 5px;
+            overflow: hidden;
+
+            &:hover {
+                background-color: darken(#e4d256, 10%);
+            }
+
+            .name {
+                font-weight: bold;
+            }
+
+            .card-body {
+                margin-top: 10px;
+
+                .pokemon-image {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
     }
 
-    .roman-list {
-        list-style-type: upper-roman;
-    }
-
-    .list-item {
-        padding: 5px;
-    }
 }
 
 .no-history {
-    margin-top: 20px;
-    border: var(--border-style);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
     border-radius: 8px;
     padding: 16px;
     font-style: italic;
