@@ -45,12 +45,14 @@ export class PokemonsComponent implements OnInit {
   }
 
   openPopup(pokemon: Pokemon): void {
-    this.selectedPokemon = pokemon;
-    this.searchHistory.push(this.selectedPokemon.name);
-    if (this.searchHistory.length > 5) {
-      this.searchHistory.shift();
-    }
-    localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
+    this.pokemonService.getPokemonDetails(pokemon.url).subscribe((detailedPokemon: Pokemon) => {
+      this.selectedPokemon = detailedPokemon;
+      this.searchHistory.push(this.selectedPokemon.name);
+      if (this.searchHistory.length > 5) {
+        this.searchHistory.shift();
+      }
+      localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
+    });
   }
 
   closePopup(): void {
