@@ -19,7 +19,7 @@ export class PokemonsComponent implements OnInit {
   searchInput: string = '';
   allTypes: string[] = [];
   searchHistory: string[] = [];
-  selectedType: string = '';
+  selectedType: string = 'all';
 
   selectedPokemon?: Pokemon;
 
