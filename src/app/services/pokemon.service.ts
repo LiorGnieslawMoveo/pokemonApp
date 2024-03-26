@@ -26,16 +26,38 @@ export class PokemonService {
     return this.http.get<any>(this.apiUrl + '?offset=0&limit=100').pipe(
       map(response => response.results.map((pokemon: Pokemon) => ({
         name: pokemon.name,
-        imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.extractPokemonIdFromUrl(pokemon.url)}.png`,
-        url: pokemon.url
-      })))
+        url: pokemon.url,
+        id: this.extractPokemonIdFromUrl(pokemon.url),
+        imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.extractPokemonIdFromUrl(pokemon.url)}.png`
+      }))),
+      mergeMap(pokemons => {
+        const requests: Observable<any>[] = pokemons.map(pokemon =>
+          this.getPokemonDetails(pokemon.url).pipe(
+            map((detail: Pokemon) => ({
+              types: detail.types.map((type: any) => type.type.name),
+              abilities: detail.abilities.map((ability: any) => ability.ability.name),
+              height: detail.height,
+              weight: detail.weight
+            }))
+          )
+        );
+        return forkJoin(requests).pipe(
+          map(details => {
+            return pokemons.map((pokemon, index) => ({
+              ...pokemon,
+              types: details[index].types,
+              abilities: details[index].abilities,
+              height: details[index].height,
+              weight: details[index].weight
+            }));
+          })
+        );
+      })
     );
   }
 
   getPokemonDetails(url: string): Observable<Pokemon> {
-    return this.http.get<Pokemon>(url).pipe(
-      map(detail => this.mapPokemon(detail, url))
-    );
+    return this.http.get<Pokemon>(url);
   }
 
   getPokemonDetailsByName(name: string): Observable<Pokemon> {
