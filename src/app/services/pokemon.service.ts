@@ -11,6 +11,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class PokemonService {
   private apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+  private imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.cookieService.get('isLoggedIn') === 'true');
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
@@ -28,7 +30,7 @@ export class PokemonService {
         name: pokemon.name,
         url: pokemon.url,
         id: this.extractPokemonIdFromUrl(pokemon.url),
-        imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.extractPokemonIdFromUrl(pokemon.url)}.png`
+        imageUrl: `${this.imageUrl}${this.extractPokemonIdFromUrl(pokemon.url)}.png`
       }))),
       mergeMap(pokemons => {
         const requests: Observable<any>[] = pokemons.map(pokemon =>
@@ -73,7 +75,7 @@ export class PokemonService {
       abilities: detail.abilities.map((ability: any) => ability.ability.name),
       height: detail.height,
       weight: detail.weight,
-      imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.extractPokemonIdFromUrl(url)}.png`,
+      imageUrl: `${this.imageUrl}${this.extractPokemonIdFromUrl(url)}.png`,
       url: url,
       id: this.extractPokemonIdFromUrl(url)
     };
