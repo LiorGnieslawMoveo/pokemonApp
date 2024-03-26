@@ -15,9 +15,7 @@ import { Pokemon } from '../../interfaces/pokemon.interface';
 export class HistoryComponent implements OnInit {
   searchHistory: string[] = [];
   isLoggedIn: boolean = false;
-
   pokemons: Pokemon[] = [];
-
 
   constructor(
     private pokemonService: PokemonService,
